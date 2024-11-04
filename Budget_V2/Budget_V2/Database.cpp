@@ -75,13 +75,17 @@ void Database::DisplayExpenseTable()
 {
 	cout << "-----Expense Table-----\n";
 	cout << "Name\t\tAmount\n";
+	_totalExpenses = 0.0f;
 	for (Expense* i : _expenses)
 	{
 		i->Display();
 		cout << endl;
+		_totalExpenses += i->GetAmount();
 	}
 	
 	cout << endl;
+	cout << "Total Expenses: " << _totalExpenses << endl;
+
 }
 
 void Database::ExportIncomeTable()
@@ -105,6 +109,10 @@ void Database::ExportExpenseTable()
 	{
 		text += i->GetName() + "\t" + to_string(i->GetAmount()) + "\n";
 	}
+
+	text += "Total Expenses: ";
+	text += to_string(_totalExpenses);
+	text += "\n";
 
 	ExportToTextFile(text, "Expenses");
 	

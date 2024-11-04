@@ -1,12 +1,54 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Projects\\CPP_Projects\\Budget_App\\Budget-App-repo\\Budget_V2\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4F62C23E-8C45-48FE-92C5-02A05695786E}|Budget_V2\\Budget_V2.vcxproj|C:\\Projects\\CPP_Projects\\Budget_App\\Budget-App-repo\\Budget_V2\\Budget_V2\\Database.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4F62C23E-8C45-48FE-92C5-02A05695786E}|Budget_V2\\Budget_V2.vcxproj|solutionrelative:Budget_V2\\Database.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F62C23E-8C45-48FE-92C5-02A05695786E}|Budget_V2\\Budget_V2.vcxproj|C:\\Projects\\CPP_Projects\\Budget_App\\Budget-App-repo\\Budget_V2\\Budget_V2\\Database.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4F62C23E-8C45-48FE-92C5-02A05695786E}|Budget_V2\\Budget_V2.vcxproj|solutionrelative:Budget_V2\\Database.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Database.cpp",
+              "DocumentMoniker": "C:\\Projects\\CPP_Projects\\Budget_App\\Budget-App-repo\\Budget_V2\\Budget_V2\\Database.cpp",
+              "RelativeDocumentMoniker": "Budget_V2\\Database.cpp",
+              "ToolTip": "C:\\Projects\\CPP_Projects\\Budget_App\\Budget-App-repo\\Budget_V2\\Budget_V2\\Database.cpp",
+              "RelativeToolTip": "Budget_V2\\Database.cpp",
+              "ViewState": "AQIAAEgAAAAAAAAAAAAAAGUAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-04T01:16:11.844Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Database.h",
+              "DocumentMoniker": "C:\\Projects\\CPP_Projects\\Budget_App\\Budget-App-repo\\Budget_V2\\Budget_V2\\Database.h",
+              "RelativeDocumentMoniker": "Budget_V2\\Database.h",
+              "ToolTip": "C:\\Projects\\CPP_Projects\\Budget_App\\Budget-App-repo\\Budget_V2\\Budget_V2\\Database.h",
+              "RelativeToolTip": "Budget_V2\\Database.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-04T01:16:10.804Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

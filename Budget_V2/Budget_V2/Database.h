@@ -33,6 +33,8 @@ class Database
 
 	protected:
 		std::vector<Expense*> _expenses;
+		float _totalExpenses = 0.0f;
+
 		std::vector<Income*> _incomes;
 		
 };
