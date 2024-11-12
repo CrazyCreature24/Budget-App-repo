@@ -4,6 +4,7 @@
 #include "Expense.h"
 #include <iostream>
 #include <fstream>
+#include <math.h>
 
 using namespace std;
 
@@ -63,12 +64,16 @@ void Database::DisplayIncomeTable()
 {
 	cout << "-----Income Table-----\n";
 	cout << "Name\t\tAmount\n";
+	_totalIncome = 0.0f;
 	for (Income* i : _incomes)
 	{
 		i->Display();
 		cout << endl;
+		_totalIncome += i->GetAmount();
 	}
 	cout << endl;
+	cout << "Total Income: " << roundf(_totalIncome * 100) / 100 << endl;
+	cout << "-----End-----" << endl << endl;
 }
 
 void Database::DisplayExpenseTable()
@@ -84,8 +89,8 @@ void Database::DisplayExpenseTable()
 	}
 	
 	cout << endl;
-	cout << "Total Expenses: " << _totalExpenses << endl;
-
+	cout << "Total Expenses: " << roundf(_totalExpenses * 100) / 100 << endl;
+	cout << "-----End-----" << endl << endl;
 }
 
 void Database::ExportIncomeTable()
@@ -96,6 +101,12 @@ void Database::ExportIncomeTable()
 	{
 		text += i->GetName() + "\t" + to_string(i->GetAmount()) + "\n";
 	}
+
+	text += "Total Income: ";
+	text += to_string(roundf(_totalIncome * 100) / 100);
+	text += "\n";
+	text += "-----End-----\n\n";
+	
 
 	ExportToTextFile(text, "Incomes");
 	
@@ -111,8 +122,9 @@ void Database::ExportExpenseTable()
 	}
 
 	text += "Total Expenses: ";
-	text += to_string(_totalExpenses);
+	text += to_string(roundf(_totalExpenses * 100) / 100);
 	text += "\n";
+	text += "-----End-----\n\n";
 
 	ExportToTextFile(text, "Expenses");
 	

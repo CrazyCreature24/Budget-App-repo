@@ -36,5 +36,6 @@ class Database
 		float _totalExpenses = 0.0f;
 
 		std::vector<Income*> _incomes;
+		float _totalIncome = 0.0f;
 		
 };
