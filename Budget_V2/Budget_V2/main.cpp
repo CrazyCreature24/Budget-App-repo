@@ -13,25 +13,28 @@ Database* g_data;
 
 void Init();
 
-void Expenses();
+void CleanUp();
 
-void Income();
+void ExpensesMenu();
+
+void IncomeMenu();
+
+void MoneySavedMenu();
 
 
 int main()
 {
 	Init();
 
-	cout << "Welcome to the budget app!\nWhat would you like to do?\n";
-	
 	char choice;
 
 	do
 	{
-		cout << "1) Look at Income\n2) Look at Expenses\n0) Quit\n";
+		cout << "Welcome to the budget app!\nWhat would you like to do?\n";
+		cout << "1) Look at Income\n2) Look at Expenses\n3) Amount Saved?\n0) Quit\n";
 		cin >> choice;
 
-		while (choice < '0' || choice > '2')
+		while (choice < '0' || choice > '3')
 		{
 			cout << "Invalid choice, try again\n";
 			cin >> choice;
@@ -40,10 +43,13 @@ int main()
 		switch (choice)
 		{
 		case '1':
-			Income();
+			IncomeMenu();
 			break;
 		case '2':
-			Expenses();
+			ExpensesMenu();
+			break;
+		case '3':
+			MoneySavedMenu();
 			break;
 		default:
 			break;
@@ -53,6 +59,10 @@ int main()
 
 	} while (choice != '0');
 
+	CleanUp();
+
+	return 0;
+
 }
 
 void Init()
@@ -60,7 +70,12 @@ void Init()
 	g_data = new Database;
 }
 
-void Expenses()
+void CleanUp()
+{
+	delete g_data;
+}
+
+void ExpensesMenu()
 {
 	char choice;
 
@@ -95,7 +110,7 @@ void Expenses()
 	} while (choice != '0');
 }
 
-void Income()
+void IncomeMenu()
 {
 	char choice;
 
@@ -120,6 +135,38 @@ void Income()
 			break;
 		case '2':
 			g_data->ExportIncomeTable();
+			cout << "File Exported" << endl;
+			system("pause");
+			break;
+		default:
+			break;
+		}
+
+	} while (choice != '0');
+}
+
+void MoneySavedMenu()
+{
+	char choice;
+
+	do {
+
+		system("cls");
+		g_data->DisplayMoneySaved();
+
+		cout << "1) Export?\n0) Back" << endl;
+		cin >> choice;
+
+		while (choice < '0' || choice > '1')
+		{
+			cout << "Invalid choice, try again\n";
+			cin >> choice;
+		}
+
+		switch (choice)
+		{
+		case '1':
+			g_data->ExportAmountSaved();
 			cout << "File Exported" << endl;
 			system("pause");
 			break;

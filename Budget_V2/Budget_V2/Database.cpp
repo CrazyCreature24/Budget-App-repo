@@ -19,7 +19,15 @@ Database::Database()
 
 Database::~Database()
 {
-	
+	for (auto i : _incomes)
+	{
+		delete i;
+	}
+
+	for (auto i : _expenses)
+	{
+		delete i;
+	}
 }
 
 void Database::CreateNewExpense()
@@ -29,10 +37,16 @@ void Database::CreateNewExpense()
 	float amount;
 
 	cout << "Create new expense" << endl;
-	cout << "Name? " << endl;
-	cin >> name;
-	cout << "Amount?" << endl;
-	cin >> amount;
+
+	do {
+		cout << "Name? " << endl;
+		cin >> name;
+	} while (name.size() > 7);
+
+	do {
+		cout << "Amount?" << endl;
+		cin >> amount;
+	} while (amount <= 0.0f);
 	
 	Expense* temp = new Expense(name, amount);
 	_expenses.push_back(temp);
@@ -48,10 +62,16 @@ void Database::CreateNewIncome()
 	float amount;
 
 	cout << "Create new income" << endl;
-	cout << "Name? " << endl;
-	cin >> name;
-	cout << "Amount?" << endl;
-	cin >> amount;
+	
+	do {
+		cout << "Name? " << endl;
+		cin >> name;
+	} while (name.size() > 7);
+
+	do {
+		cout << "Amount?" << endl;
+		cin >> amount;
+	} while (amount <= 0.0f);
 
 	Income* temp = new Income(name, amount);
 	_incomes.push_back(temp);
@@ -72,7 +92,7 @@ void Database::DisplayIncomeTable()
 		_totalIncome += i->GetAmount();
 	}
 	cout << endl;
-	cout << "Total Income: " << roundf(_totalIncome * 100) / 100 << endl;
+	cout << "Total Income: " << RoundToTwoDecimals(_totalIncome) << endl;
 	cout << "-----End-----" << endl << endl;
 }
 
@@ -89,8 +109,17 @@ void Database::DisplayExpenseTable()
 	}
 	
 	cout << endl;
-	cout << "Total Expenses: " << roundf(_totalExpenses * 100) / 100 << endl;
+	cout << "Total Expenses: " << RoundToTwoDecimals(_totalExpenses) << endl;
 	cout << "-----End-----" << endl << endl;
+}
+
+void Database::DisplayMoneySaved()
+{
+	cout << "-----Money Saved-----\n";
+	cout << "Income:" << RoundToTwoDecimals(_totalIncome) << endl;
+	cout << "Expenses: " << RoundToTwoDecimals(_totalExpenses) << endl;
+	cout << "Money Saved: " << RoundToTwoDecimals(_totalIncome - _totalExpenses) << endl;
+	cout << "-----End-----\n\n";
 }
 
 void Database::ExportIncomeTable()
@@ -103,7 +132,7 @@ void Database::ExportIncomeTable()
 	}
 
 	text += "Total Income: ";
-	text += to_string(roundf(_totalIncome * 100) / 100);
+	text += to_string(RoundToTwoDecimals(_totalIncome));
 	text += "\n";
 	text += "-----End-----\n\n";
 	
@@ -122,7 +151,7 @@ void Database::ExportExpenseTable()
 	}
 
 	text += "Total Expenses: ";
-	text += to_string(roundf(_totalExpenses * 100) / 100);
+	text += to_string(RoundToTwoDecimals(_totalExpenses));
 	text += "\n";
 	text += "-----End-----\n\n";
 
@@ -130,12 +159,24 @@ void Database::ExportExpenseTable()
 	
 }
 
+void Database::ExportAmountSaved()
+{
+	string text;
+	text += "-----Money Saved-----\n";
+	text += "Income: " +  to_string(RoundToTwoDecimals(_totalIncome)) + "\n";
+	text += "Expenses: " + to_string(RoundToTwoDecimals(_totalExpenses)) + "\n";
+	text += "Money Saved: " + to_string(RoundToTwoDecimals(_totalIncome - _totalExpenses)) + "\n";
+	text += "-----End-----\n\n";
+	ExportToTextFile(text, "MoneySaved");
+}
+
 void Database::ExportToTextFile(std::string text, std::string filename)
 {
 	// TODO: Export in a folder with the current date on it
 	ofstream file;
 
-	file.open(filename + ".txt", std::ios_base::app);
+	file.open(filename + ".txt");
+	//file.open(filename + ".txt", std::ios_base::app); // This allows you to add on to an existing text file
 	file << text;
 }
 
@@ -158,6 +199,11 @@ void Database::OpenFile(const char* filename)
 		cout << "File contains: " << endl;
 		cout << text;
 	}
+}
+
+float Database::RoundToTwoDecimals(float price)
+{
+	return roundf(price * 100) / 100;
 }
 
 

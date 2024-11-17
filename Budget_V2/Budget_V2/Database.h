@@ -24,12 +24,16 @@ class Database
 
 		void DisplayIncomeTable();
 		void DisplayExpenseTable();
+		void DisplayMoneySaved();
 
 		void ExportIncomeTable();
 		void ExportExpenseTable();
+		void ExportAmountSaved();
 
 		void ExportToTextFile(std::string text, std::string filename);
 		void OpenFile(const char* filename);
+
+		float RoundToTwoDecimals(float price);
 
 	protected:
 		std::vector<Expense*> _expenses;
